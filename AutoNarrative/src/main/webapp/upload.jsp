@@ -8,9 +8,9 @@
 <%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %> --%>
 
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-<%@ taglib prefix="aui" uri="http://liferay.com/tld/aui"  %>
+<%-- <%@ taglib prefix="aui" uri="http://liferay.com/tld/aui"  %>
 <%@ taglib prefix="liferay-theme" uri="http://liferay.com/tld/theme"  %>
-<%@ taglib prefix="liferay-ui" uri="http://liferay.com/tld/ui"  %>
+ --%><%@ taglib prefix="liferay-ui" uri="http://liferay.com/tld/ui"  %>
 
 <%@ page import="javax.portlet.PortletURL" %>
 <%@ page import="org.apache.wink.json4j.JSONArray"%>  
@@ -57,7 +57,7 @@
 <%-- <form action="${uploadURL}" method="post" enctype="multipart/form-data" onsubmit="return validateInput();"> --%>
 <form action="${uploadURL}" method="post" enctype="multipart/form-data" >
 	<div>
-		<label>Case ID <sup>*</sup>:</label> <input type="text" name="ca seID" id="caseID">
+		<label>Case ID <sup>*</sup>:</label> <input type="text" name="caseID" id="caseID">
 	</div>
 	<div>
 		<label>Upload File <sup>*</sup>:</label> <input type="file" name="fileupload" id="file"> 
