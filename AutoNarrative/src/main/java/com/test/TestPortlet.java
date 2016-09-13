@@ -39,8 +39,9 @@ public class TestPortlet extends MVCPortlet {
 		
 		
 		String caseID= ParamUtil.getString(actionRequest, "caseID");
-		String selectedFile=ParamUtil.getString(actionRequest, "file");
-		InputBean inputBean=new InputBean(caseID, selectedFile);
+		UploadPortletRequest uploadRequest = PortalUtil.getUploadPortletRequest((actionRequest));
+		System.out.println("caseID-->> "+caseID+"\nselectedFile---->> "+uploadRequest.getFileName("fileupload"));
+		InputBean inputBean=new InputBean(caseID, uploadRequest.getFileName("fileupload"));
 	
 		
 		ArrayList<String>inputList=new ArrayList<String>();
@@ -55,9 +56,9 @@ public class TestPortlet extends MVCPortlet {
 		
 		String baseDir=Constants.getProperty("baseDir");		
 		HttpServletRequest request=PortalUtil.getHttpServletRequest(actionRequest);		
-		System.out.println("-------------------In uploadFile method caseID-------------"+ParamUtil.getString(actionRequest, "caseID"));
-		System.out.println("byeeee");
-		UploadPortletRequest uploadRequest = PortalUtil.getUploadPortletRequest((actionRequest));
+		//System.out.println("-------------------In uploadFile method caseID-------------"+ParamUtil.getString(actionRequest, "caseID"));
+		
+		
 		 
 		long sizeInBytes = uploadRequest.getSize(fileInputName);
 		// System.out.println("actual size of file----->> "+sizeInBytes+"\nacheck size of disk--------> "+SIZE);
@@ -111,7 +112,8 @@ public class TestPortlet extends MVCPortlet {
 			list.add(inputBean.getCaseID());
 			SessionErrors.add(actionRequest, "caseID.errorMsg.missing");
 		}
-		if(!Validator.isName(inputBean.getFileName())){
+		System.out.println(Validator.isFileName(inputBean.getFileName()));
+		if(!Validator.isFileName(inputBean.getFileName())){
 			list.add(inputBean.getFileName());
 			SessionErrors.add(actionRequest, "file.errorMsg.missing");
 		}
